@@ -147,7 +147,7 @@
 			<input type="hidden" name="pageNum" value="${pageNum }">
 			<input type="hidden" name="searchKey" value="${searchKey }">
 			<input type="hidden" name="searchValue" value="${searchValue }">
-			
+			asdfasdfasdf
 		</c:if>
 				
 			<input type="hidden" name="mode" value="${mode }"/>
