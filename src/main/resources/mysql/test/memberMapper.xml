@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.study.test.member.dao.MemberDAO">
+
+<insert id="insertBoard" parameterType="com.study.test.board.dto.BoardDTO">
+ insert into member_table (memberId,memberName,memberPw,memberPost,memberAddr,
+	memberTel,memberBirth,memberSex,memberEmail,memberDate) 
+	values(#{memberId},#{memberName},#{memberPw},#{memberPost},#{memberAddr},
+	#{memberTel},#{memberBirth},#{memberSex},#{memberEmail},now())
+</insert>
+
+</mapper>
