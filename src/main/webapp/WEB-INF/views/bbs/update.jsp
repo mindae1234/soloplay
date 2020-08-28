@@ -143,7 +143,7 @@
 	        <input type="reset" value=" 다시입력 " class="btn2" 
 	       	onclick="document.myForm.boardSubject.focus();"/>
 		    <input type="button" value=" 수정취소 " class="btn2" 
-		    onclick="javascript:location.href='<%=cp%>/bbs/articel?boardNo=${boardDTO.boardNo}'"/>
+		    onclick="javascript:location.href='<%=cp%>/bbs/article?boardNo=${boardDTO.boardNo}'"/>
 	</div>
 
     </form>

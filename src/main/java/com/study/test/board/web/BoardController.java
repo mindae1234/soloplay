@@ -118,14 +118,14 @@ public class BoardController {
 			listNum = dataCount - (start + n -1);
 			data.setListNum(listNum);
 			
-			for(int i=0; i<lists.size(); i++) {
+			/*for(int i=0; i<lists.size(); i++) {
 				System.out.println(lists.get(i));
 				System.out.println(data.getBoardNo());
 				System.out.println(data.getBoardDate());
 				System.out.println(data.getBoardSubject());
 				System.out.println(data.getBoardCount());
 				System.out.println(data.getListNum());
-				}
+				}*/
 			
 			n++;
 					
@@ -191,10 +191,11 @@ public class BoardController {
 		System.out.println(boardDTO.getBoardContent());
 		
 		request.setAttribute("boardDTO", boardDTO);
-		
+		System.err.println("게시글");
 		return "/bbs/article";
 	}
 	
+	//수정
 	@RequestMapping(value ="bbs/update", method= { RequestMethod.GET, RequestMethod.POST})
 	public String update(Model model, HttpServletRequest request, BoardDTO boardDTO) {
 		
@@ -202,16 +203,30 @@ public class BoardController {
 		boardDTO = boardDAO.article(boardNo);
 		
 		request.setAttribute("boardDTO", boardDTO);
-		
-		
+			
 		return "/bbs/update";
 	}
 	
+	//수정중
 	@RequestMapping(value ="bbs/update_ok", method= { RequestMethod.GET, RequestMethod.POST})
 	public String update_ok(Model model, HttpServletRequest request, BoardDTO boardDTO) {
 				
 		boardDAO.updateBoard(boardDTO);
 		System.out.println("업데이트");
+		return "redirect:/bbs/list";
+	}
+	
+	//삭제
+	@RequestMapping(value ="bbs/delete_ok", method= { RequestMethod.GET, RequestMethod.POST})
+	public String delete_ok(Model model, HttpServletRequest request, BoardDTO boardDTO) {
+		
+		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+		System.out.println("삭제삭제"+ boardNo);
+		
+		boardDAO.deleteBoard(boardNo);
+		
+		System.out.println("삭제");
+		
 		return "redirect:/bbs/list";
 	}
 	

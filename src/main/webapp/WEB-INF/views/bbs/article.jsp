@@ -9,7 +9,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>게 시 판</title>
+<title>게 시 판 ${boardDTO.boardNo }++${boardNO }</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 <link rel="stylesheet" href="<%=cp%>/resources/css/style.css" type="text/css"/>
@@ -57,7 +57,7 @@
                <input type="button" value=" 수정 " class="btn2" 
                onclick="javascript:location ='<%=cp%>/bbs/update?boardNo=${boardDTO.boardNo }'"/>
                <input type="button" value=" 삭제 " class="btn2" 
-               onclick="javascript:location ='<%=cp%>/bbs/delete?boardNo=${boardDTO.boardNo }'"/>
+               onclick="javascript:location ='<%=cp%>/bbs/delete_ok?boardNo=${boardDTO.boardNo }'"/>
 		</div>
 	<%-- 	</c:when> --%>
 	<%-- </c:choose> --%>
