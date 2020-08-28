@@ -71,7 +71,7 @@
             return;
         }
     	f.pwd.value = str; */
-    	f.action = "<%=cp%>/bbs/created_ok";   
+    	f.action = "<%=cp%>/bbs/update_ok";   
         
         f.submit();
     }
@@ -91,9 +91,9 @@
 	<div id="bbsCreated">
 		<div class="bbsCreated_bottomLine">
 			<dl>
-				<dt>제&nbsp;&nbsp;&nbsp;&nbsp;목</dt> ${mode }
+				<dt>제&nbsp;&nbsp;&nbsp;&nbsp;목</dt>
 				<dd>
-				      <input type="text" name="boardSubject" size="50" maxlength="100"  class="boxTF" value="${dto.subject }" />
+				      <input type="text" name="boardSubject" size="50" maxlength="100"  class="boxTF" value="${boardDTO.boardSubject }" />
 				</dd>
 			</dl>
 		</div>
@@ -102,7 +102,7 @@
 			<dl>
 				<dt>작성자</dt>
 				<dd>
-				      <input type="text" name="memberId" size="35" maxlength="20" class="boxTF" value="${dto.name }" />
+				      <input type="text" name="memberId" size="35" maxlength="20" class="boxTF" value="${boardDTO.memberId }" />
 				</dd>
 			</dl>
 		</div>
@@ -120,7 +120,7 @@
 			<dl>
 				<dt>내&nbsp;&nbsp;&nbsp;&nbsp;용</dt>
 				<dd>
-				      <textarea name="boardContent" cols="63" rows="12" class="boxTA">${dto.content }</textarea>
+				      <textarea name="boardContent" cols="63" rows="12" class="boxTA">${boardDTO.boardContent }</textarea>
 				</dd>
 			</dl>
 		</div>
@@ -138,12 +138,12 @@
 	<div id="bbsCreated_footer">
 		
 				
-			<input type="button" value=" 등록하기 " class="btn2" 
+			<input type="button" value=" 수정하기 " class="btn2" 
 	        onclick="sendIt();"/>    
 	        <input type="reset" value=" 다시입력 " class="btn2" 
 	       	onclick="document.myForm.boardSubject.focus();"/>
-		    <input type="button" value=" 작성취소 " class="btn2" 
-		    onclick="javascript:location.href='<%=cp%>/bbs/list'"/>
+		    <input type="button" value=" 수정취소 " class="btn2" 
+		    onclick="javascript:location.href='<%=cp%>/bbs/articel?boardNo=${boardDTO.boardNo}'"/>
 	</div>
 
     </form>

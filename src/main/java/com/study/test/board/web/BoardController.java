@@ -1,5 +1,6 @@
 package com.study.test.board.web;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -98,7 +99,16 @@ public class BoardController {
 		
 		//리스트 가져오기
 		List<BoardDTO> lists = boardDAO.boardList();
+		System.out.println(start);
+		System.out.println(end);
+		System.out.println(dataCount);
+		
+	/*	HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);*/
+		
 		System.out.println("<<<<<<<<<<");
+		
 		int listNum, n = 0;
 		ListIterator<BoardDTO> it = lists.listIterator();
 		while(it.hasNext()) {
@@ -108,20 +118,28 @@ public class BoardController {
 			listNum = dataCount - (start + n -1);
 			data.setListNum(listNum);
 			
+			for(int i=0; i<lists.size(); i++) {
+				System.out.println(lists.get(i));
+				System.out.println(data.getBoardNo());
+				System.out.println(data.getBoardDate());
+				System.out.println(data.getBoardSubject());
+				System.out.println(data.getBoardCount());
+				System.out.println(data.getListNum());
+				}
+			
 			n++;
+					
 		}
+				
+		String articleUrl = cp + "/bbs/article";
 		
-		System.out.println(it);
-		
-		
-		
-		
+		request.setAttribute("lists", lists);
 		request.setAttribute("mode",insert);
 		request.setAttribute("loginUrl",loginUrl);
 		request.setAttribute("createdUrl", createdUrl);
 		request.setAttribute("dataCount", dataCount);
 		request.setAttribute("pageIndexList", pageIndexList);
-		
+		request.setAttribute("articleUrl", articleUrl);
 
 		return "bbs/list";
 	}
@@ -155,6 +173,48 @@ public class BoardController {
 		
 		return "redirect:/bbs/list";
 	}
+	
+	//게시글
+	
+	@RequestMapping(value ="bbs/article", method= { RequestMethod.GET, RequestMethod.POST})
+	public String article(Model model, HttpServletRequest request, BoardDTO boardDTO) {
+		
+		String cp = request.getContextPath();
+		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+		System.out.println(boardNo);
+		
+		boardDTO= boardDAO.article(boardNo);
+		System.out.println(boardNo);
+		System.out.println(boardDTO.getBoardNo());
+		System.out.println(boardDTO.getBoardSubject());
+		System.out.println(boardDTO.getBoardDate());
+		System.out.println(boardDTO.getBoardContent());
+		
+		request.setAttribute("boardDTO", boardDTO);
+		
+		return "/bbs/article";
+	}
+	
+	@RequestMapping(value ="bbs/update", method= { RequestMethod.GET, RequestMethod.POST})
+	public String update(Model model, HttpServletRequest request, BoardDTO boardDTO) {
+		
+		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
+		boardDTO = boardDAO.article(boardNo);
+		
+		request.setAttribute("boardDTO", boardDTO);
+		
+		
+		return "/bbs/update";
+	}
+	
+	@RequestMapping(value ="bbs/update_ok", method= { RequestMethod.GET, RequestMethod.POST})
+	public String update_ok(Model model, HttpServletRequest request, BoardDTO boardDTO) {
+				
+		boardDAO.updateBoard(boardDTO);
+		System.out.println("업데이트");
+		return "redirect:/bbs/list";
+	}
+	
 	
 
 }

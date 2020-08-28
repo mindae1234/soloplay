@@ -76,17 +76,17 @@
 		</div>
 		<div id="lists">
 		<!-- jstl로 가져옴 -->
-	<%-- 	<c:forEach var="boardDTO" items="">
+	 	<c:forEach var="boardDTO" items="${lists} ">
 			<dl>
-				<dd class="num">${boardDTO.bordNo }</dd>
+				<dd class="num">${boardDTO.boardNo }</dd>
 				<dd class="subject">
-				<a href="${articleUrl }&boardNo_kmk=${boardDTO.boardNo_kmk}">
-				${boarDTO.boardSubject}</a></dd>
+			<%-- 	<a href="${articleUrl }&boardNo=${boardDTO.boardNo}">
+				${boarDTO.boardSubject}</a></dd> --%>
 				<dd class="name">${boardDTO.memberID }</dd>
 				<dd class="created">${boardDTO.boardDate}</dd>
 				<dd class="hitCount">${boardDTO.boardCount}</dd>
 			</dl>
-		</c:forEach> --%>
+		</c:forEach> 
 
 		</div>
 		<div id="footer">
