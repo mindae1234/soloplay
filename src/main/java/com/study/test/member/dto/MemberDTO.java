@@ -16,6 +16,8 @@ public class MemberDTO {
 	int memberAdminNo;
 	String memberEmail;
 	Date memberDate;
+	String pinNum;
+	String publicKey;
 	
 	public int getMemberNo() {
 		return memberNo;
@@ -88,6 +90,26 @@ public class MemberDTO {
 	}
 	public void setMemberDate(Date memberDate) {
 		this.memberDate = memberDate;
+	}	
+	public String getPinNum() {
+		return pinNum;
+	}
+	public void setPinNum(String pinNum) {
+		this.pinNum = pinNum;
+	}
+	public String getPublicKey() {
+		return publicKey;
+	}
+	public void setPublicKey(String publicKey) {
+		this.publicKey = publicKey;
+	}
+	@Override
+	public String toString() {
+		return "MemberDTO [memberNo=" + memberNo + ", memberId=" + memberId + ", memberName=" + memberName
+				+ ", memberPw=" + memberPw + ", memberPost=" + memberPost + ", memberAddr=" + memberAddr
+				+ ", memberTel=" + memberTel + ", memberBirth=" + memberBirth + ", memberSex=" + memberSex
+				+ ", memberAdminNo=" + memberAdminNo + ", memberEmail=" + memberEmail + ", memberDate=" + memberDate
+				+ "]";
 	}
 	
 	

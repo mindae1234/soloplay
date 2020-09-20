@@ -4,11 +4,24 @@
 
 <mapper namespace="com.study.test.member.dao.MemberDAO">
 
-<insert id="insertBoard" parameterType="com.study.test.board.dto.BoardDTO">
+<insert id="insertMember" parameterType="com.study.test.member.dto.MemberDTO">
  insert into member_table (memberId,memberName,memberPw,memberPost,memberAddr,
 	memberTel,memberBirth,memberSex,memberEmail,memberDate) 
 	values(#{memberId},#{memberName},#{memberPw},#{memberPost},#{memberAddr},
 	#{memberTel},#{memberBirth},#{memberSex},#{memberEmail},now())
 </insert>
+
+<select id="userInfo" parameterType="String" resultType="com.study.test.member.dto.MemberDTO">
+	select memberNo,memberId,memberPw,publicKey,pinNum from member_table where memberId =#{memberId}
+</select>
+
+
+<update id="pinNumInsert" parameterType="com.study.test.member.dto.MemberDTO">
+	update member_table set pinNum=#{pinNum},publicKey=#{publicKey} where memberNo=#{memberNo}
+</update>
+
+<select id="idChk" parameterType="com.study.test.member.dto.MemberDTO" resultType="int">
+	select COUNT(*) from member_table where memberId =#{memberId}
+</select>
 
 </mapper>

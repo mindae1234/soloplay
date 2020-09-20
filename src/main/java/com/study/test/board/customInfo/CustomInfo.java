@@ -17,6 +17,12 @@ public class CustomInfo {
 	public void setMemberPw(String memberPw) {
 		this.memberPw = memberPw;
 	}
+	@Override
+	public String toString() {
+		return "CustomInfo [memberId=" + memberId + ", memberPw=" + memberPw + "]";
+	}
+	
+	
 	
 	
 	
